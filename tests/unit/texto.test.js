@@ -36,7 +36,7 @@ describe('validarTexto', () => {
     expect(resultado.error).toContain('al menos');
   });
 
-  
+
 
 });
 
@@ -54,5 +54,18 @@ describe('formatearTexto', () => {
     expect(resultado).toBe('');
   });
 
-  
+  it('debe retornar un string vacío si solo hay espacios', () => {
+    const resultado = formatearTexto('    ');
+    expect(resultado).toBe('');
+  });
+
+  it('debe retornar un string formateado a pesar de contener caracteres especiales', () => {
+    const resultado = formatearTexto('árbol');
+    expect(resultado).toBe('Árbol');
+  });
+
+  it('debe retornar el string inalterado si está formateado', () => {
+    const resultado = formatearTexto('Árbol');
+    expect(resultado).toBe('Árbol');
+  });
 });

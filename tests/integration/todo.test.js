@@ -24,7 +24,7 @@ describe('crearTareaElemento', () => {
     expect(li.classList.contains('tarea-item')).toBe(true);
   });
 
-  
+
 });
 
 describe('agregarTarea', () => {
@@ -41,7 +41,11 @@ describe('agregarTarea', () => {
     expect(lista.querySelector('.tarea-texto').textContent).toBe('Aprender vitest');
   });
 
-  
+  it('debe formatear el texto antes de agregarlo (pri. may. sigu min', () => {
+    agregarTarea(' eSTudIAR VeRiFIcaCIon de SW', lista);
+    const span = lista.querySelector('.tarea-texto');
+    expect(span.textContent).toBe('Estudiar verificacion de sw');
+  });
 });
 
 describe('eliminarTarea', () => {
