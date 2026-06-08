@@ -23,6 +23,20 @@ describe('validarTexto', () => {
     expect(resultado.valido).toBe(true);
   });
 
+  // --- Casos inválidos ---
+  it('debe retornar inválido cuando el texto está vacío', () => {
+    const resultado = validarTexto(''); // Arrange - Act
+    expect(resultado.valido).toBe(false); // Assert
+    expect(resultado.error).toContain('vacío');
+  });
+
+  it('debe retornar inválido cuando hay menos de 3 caracteres', () => {
+    const resultado = validarTexto('ab'); // Arrange - Act
+    expect(resultado.valido).toBe(false); // Assert
+    expect(resultado.error).toContain('al menos');
+  });
+
+  
 
 });
 
