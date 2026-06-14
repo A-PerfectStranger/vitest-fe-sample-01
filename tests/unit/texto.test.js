@@ -35,9 +35,6 @@ describe('validarTexto', () => {
     expect(resultado.valido).toBe(false); // Assert
     expect(resultado.error).toContain('al menos');
   });
-
-
-
 });
 
 // ============================================================
@@ -67,5 +64,70 @@ describe('formatearTexto', () => {
   it('debe retornar el string inalterado si está formateado', () => {
     const resultado = formatearTexto('Árbol');
     expect(resultado).toBe('Árbol');
+  });
+});
+
+// ============================================================
+// Pruebas adicionales — Tarea 1
+// ============================================================
+describe('Pruebas adicionales — Tarea 1', () => {
+  // --- validarTexto: caracteres especiales ---
+  it('debe retornar válido para texto con emojis', () => {
+    // Arrange
+    const texto = 'Tarea feliz 😄';
+    // Act
+    const resultado = validarTexto(texto);
+    // Assert
+    expect(resultado.valido).toBe(true);
+    expect(resultado.error).toBe('');
+  });
+
+  it('debe retornar válido para texto con tildes', () => {
+    // Arrange
+    const texto = 'Revisión del código';
+    // Act
+    const resultado = validarTexto(texto);
+    // Assert
+    expect(resultado.valido).toBe(true);
+    expect(resultado.error).toBe('');
+  });
+
+  it('debe retornar válido para texto con eñes', () => {
+    // Arrange
+    const texto = 'Una araña y una cigueña en una cabaña';
+    // Act
+    const resultado = validarTexto(texto);
+    // Assert
+    expect(resultado.valido).toBe(true);
+    expect(resultado.error).toBe('');
+  });
+
+  it('debe retornar inválido para texto con 3 espacios seguidos de una sola letra ("   A")', () => {
+    // Arrange: al eliminar los espacios queda un carácter, falla por la condición de minimo 3 caracteres
+    const texto = '   A';
+    // Act
+    const resultado = validarTexto(texto);
+    // Assert
+    expect(resultado.valido).toBe(false);
+    expect(resultado.error).toContain('al menos');
+  });
+
+  // --- formatearTexto: caracteres especiales ---
+  it('debe capitalizar correctamente texto con tilde inicial como "árbol"', () => {
+    // Arrange
+    const texto = 'árbol';
+    // Act
+    const resultado = formatearTexto(texto);
+    // Assert
+    expect(resultado).toBe('Árbol');
+  });
+
+  it('debe dejar sin cambios un texto que ya está correctamente formateado', () => {
+    // Arrange
+    const texto = 'Reunión de panas';
+    // Act
+    const resultado = formatearTexto(texto);
+    // Assert
+    expect(resultado).toBe('Reunión de panas');
   });
 });
