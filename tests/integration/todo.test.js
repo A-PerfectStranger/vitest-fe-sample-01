@@ -123,9 +123,9 @@ describe('mostrarError', () => {
 });
 
 // ============================================================
-// Pruebas adicionales — Tarea 2
+// Tarea 2
 // ============================================================
-describe('Pruebas adicionales — Tarea 2', () => {
+describe('Tarea 2', () => {
   it('debe eliminar el elemento de la lista al hacer clic en el botón eliminar', () => {
     // Arrange
     const lista = crearLista();

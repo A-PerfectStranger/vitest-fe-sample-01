@@ -68,9 +68,9 @@ describe('formatearTexto', () => {
 });
 
 // ============================================================
-// Pruebas adicionales — Tarea 1
+// Tarea 1
 // ============================================================
-describe('Pruebas adicionales — Tarea 1', () => {
+describe('Tarea 1', () => {
   // --- validarTexto: caracteres especiales ---
   it('debe retornar válido para texto con emojis', () => {
     // Arrange
